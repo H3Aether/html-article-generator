@@ -1,0 +1,91 @@
+Creating my own markup language and its intertpreter to generate custom blog articles.
+July 22, 2022
+This is the first article of my blog. I just finished writing all the html to display the articles the way that I want. But I’m also thinking about my future self, who will most likely not want to dive into the code a second time. That is why I decided to create a tool that will allow me to create webpages of articles, based on a simple txt file. This webpage has been generated this way.
+
+#title Abstract
+
+The goal here is to allow anyone to create an html template once, and use it again for different contents (here, to write articles). To do this, I will start by defining a very simple custom markup language, then write code to convert it into a webpage.
+The task will be divided into 3 parts: first, writing an article in a txt file, then converting it into a json array using Python, and finally turning that array into the final html page using JavaScript. Indeed, JavaScript can read json files with ease (after all, JSON stands for JavaScript Object Notation).
+
+#image image_abstract.png The 3 steps of the process
+
+
+
+#title First step: The markup language
+#subtitle Presentation
+To create this language, I took inspiration from existing tools, mostly HTML and LaTeX. It is design to be simple to use, and has only few options, as all the visual elements like fonts, colours, or text alignment are handled by CSS later. The goal here is to be able to master it in a minute and start writing without worrying about the quality of the final result.
+
+#subtitle Structure and tags used
+The file starts with the title of the article, followed by the date. Then a series of tags can be used to organise the article. The most important ones are the #title and #subtitle tags. Writing #image adds an image from a custom source and its description. Writing text without a tag will simply display it as a paragraph.
+Comments can be added by beginning the line with //. These will not be saved anywhere other than in the txt file.
+Finally, the file must end with an #end tag. And there we have it! 
+
+#subtitle Example
+// Add a code snippet with “nohighlight” to show an example
+
+
+
+#title Second step: Converting to JSON
+#subtitle Presentation
+Now that the article has been written in a txt file, I will use a Python script to convert it to a JSON array. It will save the content written as well as its ‘class’ (title, subtitle, image, or text). The script will read the file line by line and add an element in the array and figure out the class according to the tag in the beginning.
+
+#subtitle Code overview
+The logic of the code is very simple. Here is how it works:
+// CODE SNIPPET
+// Read the article title and date
+// While the current line is not ‘#end’
+//     Read the current line
+//     Add an element in the JSON array based on its content
+//     Skip to the next nonempty line
+
+The first function that we need will allow us to ignore the empty lines, by skipping to the next nonempty one (comments are considered empty lines).
+
+// CODE SNIPPET: next_nonempty_lines
+
+Then, for each line that we find, we can create a dictionary corresponding to the content that we read. Luckily Python makes this very easy with the startswith() attribute. Here is an example with a #title line:
+
+// CODE SNIPPET: startswith(#title )
+
+The #image tag is a bit trickier to deal with since it can be followed (or not) by two arguments. Here is how it is handled:
+
+// CODE SNIPPET: extractImageInfos
+
+The final step is to write the array in a JSON file and save it. The program can be used by running the following command : py article_txt_to_json.py <article_txt_file_name>.
+The complete code can be found on my GitHub.
+
+
+
+#title Third step: Converting to HTML
+#subtitle Presentation
+Now that I can create a structured JSON file in seconds, I need to use it to generate an HTML webpage. I will naturally use JavaScript. The idea is to start with a nearly empty page and append <div> elements one after the other. The generated code can then be saved in a new file and used on the blog.
+
+#subtitle Importing the JSON file
+When I tried to make my program import a JSON file and read it, I hit an unexpected wall. One could think that a localhosted HTML page will have access to local files, but the request is blocked. What happens is that local files are now considered as foreign files, since a security threat has been discovered. I finally found an answer that does the job perfectly:
+
+// CODE SNIPPET: getJsonFile
+
+Now we only need to define the function that will add a <div> in the HTML page. It is very straight forward and only changes its behaviour if an image is encountered.
+
+// CODE SNIPPET: addElement
+
+That’s it for the code! Once again all of it is available on my GitHub.
+
+
+#title Demonstration & Improvements
+#subtitle Demonstration
+Let’s look at how to use this tool. First write your article and convert it to JSON by executing the following command in a terminal: py article_txt_to_json.py <article_txt_file_name>.
+#image image_terminal.png Executing the command in a terminal.
+Then open article_json_to_html_converter.html with your browser and select the newly generated JSON file. The page updates and displays the article!
+#image image_html_converter.png
+#image image_html_result.png The converter page and the result.
+To save it, open the inspector with F12, copy the 'container' div, and paste it in the empty_article.html (line 40). Don't forget to change the title of the page (line 8). Then save it as new file.
+#image image_copy_code.png Copying the code : Inspector, Right click on <div class="container"> > Copy > Exterior of HTML.
+And voilà! This file can be used for the blog. Nevertheless, make sure that the related CSS files are accessible.
+To further modify it, you can use an online HTML formatter (like https://www.freeformatter.com/html-formatter.html) and add new elements.
+
+#subtitle Possible improvements
+I am generally satisfied of this tool and believe that it will save me a lot of time. However, it can only create about 90% of an article. You may have noticed that this article contains code snippets, and that the markup language does not handle them. I tried to implement it but couldn’t finish it, mainly because of the way that Python handles backslashes. Same thing for math formulas (that are not present here, but I plan to include in the next articles).
+As a result, I have to manually add these in the final html file, which is not difficult nor time consuming, but I would still like my language to handle it.
+For the third time, all of this project is available on my GitHub. I hope you liked it, and feel free to use and modify it.
+
+#end

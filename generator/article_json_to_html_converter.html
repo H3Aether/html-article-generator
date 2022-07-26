@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+    <head>
+        <meta charset="UTF-8">
+        <title>JSON -> HTML Converter</title>
+        <link rel="stylesheet" href="../src/styles_articles.css">
+        <link rel="stylesheet" href="../../src/fonts/fonts.css">
+        <link rel="icon" href="../../images/website_logo.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github.min.css"> <!-- Highlight.js theme -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- MathJax inline LaTeX using \( some math \)-->
+        <script type="text/x-mathjax-config">
+            MathJax = {
+                tex: {
+                inlineMath: [["\\(", "\\)"]],
+                processEscapes: true,
+                }
+            }
+        </script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <!-- MathJax -->
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> <!-- MathJax -->
+    </head>
+    <body>
+        <div id="removeme">
+            Import the article JSON file :
+            <input type="file" id="jsonfileinput" />
+        </div>
+
+        <div class="menu">
+            <img src="../../images/website_logo.png" onclick="window.location = '../../en/index.html';">
+            <a href="../../en/blog.html">Back to blog</a>
+        </div>
+        <div class="container">
+            <div class="footer">Written by Alexis Boussaroque.</div>
+        </div>
+
+        <script type="text/javascript" src="converter_script.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> <!-- Highlight.js script -->
+    </body>
+</html>

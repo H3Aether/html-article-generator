@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title of the article</title>
+        <link rel="stylesheet" href="../src/styles_articles.css">
+        <link rel="stylesheet" href="../../src/fonts/fonts.css">
+        <link rel="icon" href="../../images/website_logo.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github.min.css"> <!-- Highlight.js theme -->
+
+        <!-- MathJax inline LaTeX using \( some math \)-->
+        <script type="text/x-mathjax-config">
+            MathJax = {
+              tex: {
+                inlineMath: [["\\(", "\\)"]],
+                processEscapes: true,
+              }
+            }
+        </script>          
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <!-- MathJax -->
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> <!-- MathJax -->
+    </head>
+    <body>
+        <div class="menu">
+            <img src="../../images/website_logo.png" onclick="window.location = '../../en/index.html';">
+            <a href="../../en/blog.html">Back to blog</a>
+        </div>
+        <div class="container">
+            <div class="article-title">This is an article title.</div>
+            <div class="date">July 22, 2022</div>
+            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae euismod nisi, id facilisis arcu. Integer suscipit nulla pharetra fermentum faucibus. Aliquam posuere augue id fermentum faucibus. Donec sed hendrerit justo. In ac convallis elit. Phasellus blandit lorem quam, non commodo massa interdum eget. Sed arcu elit, vehicula vitae ante vel, ornare pulvinar neque. Suspendisse nulla nisl, commodo sed tristique a, dapibus vel lorem. Ut sit amet consequat erat. Praesent quis enim eget turpis consectetur maximus quis sed risus. Nam malesuada mollis turpis ut imperdiet. Nullam tincidunt pulvinar pretium. Proin sollicitudin cursus tortor. Etiam tincidunt diam et eleifend rhoncus. Vivamus ut commodo libero.</div>
+            <div class="title">This is a title</div>
+            <div class="subtitle">This is a subtitle</div>
+            <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae euismod nisi, id facilisis arcu. Integer suscipit nulla pharetra fermentum faucibus. Aliquam posuere augue id fermentum faucibus. Donec sed hendrerit justo. In ac convallis elit. Phasellus blandit lorem quam, non commodo massa interdum eget. Sed arcu elit, vehicula vitae ante vel, ornare pulvinar neque. Suspendisse nulla nisl, commodo sed tristique a, dapibus vel lorem. Ut sit amet consequat erat. Praesent quis enim eget turpis consectetur maximus quis sed risus. Nam malesuada mollis turpis ut imperdiet. Nullam tincidunt pulvinar pretium. Proin sollicitudin cursus tortor. Etiam tincidunt diam et eleifend rhoncus. Vivamus ut commodo libero.</div>
+            <div class="image"><img src="dummy_image.jpg"/>This is a description of the image.</div>
+            <div class="title">Manually adding new elements</div>
+            <div class="text">Adding inline LaTeX using MathJax: \(x=0\).</div>
+            <div class="text">Adding math formulas using MathJax:</div>
+            <div class="math">
+                \[e^{i \pi} + 1 = 0\]
+                \[ \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} \]
+            </div>
+            <div class="text">Adding code using highlight.js:</div>
+
+            <pre><code class="javascript">
+function addElement(dict) {
+    var newDiv = document.createElement("div"); // Create a new div element
+    var newContent = document.createTextNode(dict.content); // Create a text node
+    newDiv.appendChild(newContent); // Append the text to div
+    newDiv.classList.add(dict.class); // Add the class to the div
+    container.insertBefore(newDiv, footer); // Append div to the HTML document, in the container and before the footer
+}</code></pre>
+
+            <div class="footer">Written by Alexis Boussaroque.</div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script> <!-- Highlight.js script -->
+        <script>hljs.highlightAll();</script>
+    </body>
+</html>

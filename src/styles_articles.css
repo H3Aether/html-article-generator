@@ -1,0 +1,195 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #F1F4F6;
+}
+
+.menu {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+.menu > img {
+    width: 50px;
+    margin: 15% auto 5% auto;
+    cursor: pointer;
+}
+
+.menu > a {
+    text-align: center;
+    font-family: 'GT Walsheim Pro Light';
+    font-size: 20px;
+    margin-bottom: 40px;
+    color: #8F8FA4;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: auto;
+    padding: 5% 5% 2% 5%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-color: #8F8FA4;
+    border-style: solid;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    color: #26262C;
+    text-align: justify;
+}
+
+/* Text classes */
+
+.article-title {
+    font-family: 'GT Walsheim Pro Bold';
+    font-size: 60px;
+    line-height: 1em;
+    margin-bottom: 15px;
+}
+
+.date {
+    font-family: 'GT Walsheim Pro Light';
+    font-size: 20px;
+    margin-bottom: 40px;
+    color: #8F8FA4;
+}
+
+.title {
+    font-family: 'GT Walsheim Pro Bold';
+    font-size: 45px;
+    line-height: 1em;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-color: #8F8FA4;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+}
+
+.subtitle {
+    font-family: 'Playfair Display Bold';
+    font-size: 24px;
+    line-height: 1.2em;
+    margin-bottom: 25px;
+}
+
+.text {
+    font-family: 'Playfair Display Regular';
+    text-indent: 80px;
+    font-size: 18px;
+    line-height: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.text > a {
+    color: #26262C;
+}
+
+
+/* Other elements */
+
+.image {
+    display : flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'GT Walsheim Pro Light';
+    font-size: 16px;
+    color: #8F8FA4;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.image > img {
+    width: 80%;
+    height: auto;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.math {
+    overflow-x: auto;
+    margin-bottom: 1.5em;
+}
+
+.footer {
+    padding-top: 6%;
+    text-align: center;
+    font-family: 'GT Walsheim Pro Light';
+    font-size: 14px;
+    color: #8F8FA4;
+}
+
+pre {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+    .article-title {
+        font-size: 45px;
+    }
+    .image > img {
+        width: 100%;
+    }
+    pre {
+        width: 100%;
+    }
+    .title {
+        font-size: 35px;
+    }
+    .text {
+        text-indent: 40px;
+    }
+}
+
+@media (max-width: 700px){
+    .menu { /* Menu becomes a header on small screen (mobile) */
+        flex-direction: row;
+        justify-content: space-between;
+        width: 80%;
+        height: 8.6vh;
+        background-color: #F1F4F6;
+        box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+        padding: 0 10%;
+    }
+    .menu > img {
+        width: 4.3vh;
+        height: 4.3vh;
+        margin: 2.15vh 0;
+    }
+    .container {
+        width: auto;
+        padding: 13vh 10% 2% 10%;
+    }
+    .article-title {
+        font-size: 35px;
+        text-align: center;
+    }
+    .date {
+        font-size: 16px;
+        text-align: center;
+    }
+    .text {
+        text-indent: 20px;
+        font-size: 14px;
+    }
+    .title {
+        font-size: 28px;
+    }
+    .subtitle {
+        font-size: 18px;
+    }
+    .image {
+        font-size: 12px;
+    }
+}
