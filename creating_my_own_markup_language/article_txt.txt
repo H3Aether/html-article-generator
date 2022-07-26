@@ -1,4 +1,4 @@
-Creating my own markup language and its intertpreter to generate custom blog articles.
+Creating my own markup language and its interpreter to generate custom blog articles.
 July 22, 2022
 This is the first article of my blog. I just finished writing all the html to display the articles the way that I want. But I’m also thinking about my future self, who will most likely not want to dive into the code a second time. That is why I decided to create a tool that will allow me to create webpages of articles, based on a simple txt file. This webpage has been generated this way.
 
